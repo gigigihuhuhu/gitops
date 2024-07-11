@@ -1,0 +1,15 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+metadata:
+  name: kustomize-inline-example
+namespace: argocd
+resources:
+  - argocd-server-ingress.yaml
+patches:
+  - target:
+      kind: Ingress
+      name: argocd-server-ingress
+    patch: |-
+      - op: replace
+        path: /spec/rules/0/host
+        value: localhost

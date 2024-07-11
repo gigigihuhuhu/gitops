@@ -1,0 +1,29 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+  name: example-ingress
+  namespace: default
+spec:
+  rules:
+  - http:
+      paths:
+      - backend:
+          service:
+            name: foo-service
+            port:
+              number: 8080
+        path: /foo(/|$)(.*)
+        pathType: Prefix
+      - backend:
+          service:
+            name: bar-service
+            port:
+              number: 8080
+        path: /bar(/|$)(.*)
+        pathType: Prefix
+status:
+  loadBalancer:
+    ingress:
+    - hostname: localhost
