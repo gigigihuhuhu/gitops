@@ -12,8 +12,8 @@ spec:
   - host: argocd.example.com
     http:
       paths:
-      - path: /argocd
-        pathType: Exact
+      - path: /
+        pathType: Prefix
         backend:
           service:
             name: argocd-server

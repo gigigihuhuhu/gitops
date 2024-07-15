@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: telemedicine-app
+  namespace: telemedicine-app
+spec:
+  selector:
+    app: telemedicine-app
+  ports:
+    - protocol: TCP
+      port: 8081
+      targetPort: 80

@@ -4,7 +4,7 @@ metadata:
   name: kustomize-argocd-local
 namespace: argocd
 resources:
-  - argocd-server-ingress.yaml
+  - ../argocd-server-ingress.yaml
 patches:
   - target:
       kind: Ingress
@@ -12,4 +12,4 @@ patches:
     patch: |-
       - op: replace
         path: /spec/rules/0/host
-        value: localhost
+        value: argocd.local

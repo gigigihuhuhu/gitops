@@ -8,7 +8,7 @@ spec:
   source:
     repoURL: 'https://github.com/gigigihuhuhu/argocd'
     targetRevision: HEAD
-    path: 'argocd/overlays/local'
+    path: 'argocd/local'
   destination:
     server: 'https://kubernetes.default.svc'
     namespace: argocd
