@@ -17,5 +17,5 @@ spec:
             name: websocket
             port:
               number: 8080
-        path: /ws
+        path: /
         pathType: Prefix
