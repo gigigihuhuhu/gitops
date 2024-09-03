@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: websocket-cm
+  namespace: websocket
+data:
+  VUE_APP_WEB_SOCKET_SERVER: "http://ws.kyungsu.com/ws"

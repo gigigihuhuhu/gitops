@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+  name: websocket-ingress
+  namespace: websocket
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: ws.kyungsu.com
+    http:
+      paths:
+      - backend:
+          service:
+            name: websocket
+            port:
+              number: 8080
+        path: /ws
+        pathType: Prefix
