@@ -9,7 +9,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: websocket.websocket.svc.cluster.local
+  - host: dev.ws.kyungsu.com
     http:
       paths:
       - backend:
@@ -17,5 +17,5 @@ spec:
             name: websocket
             port:
               number: 8080
-        path: /
+        path: /ws
         pathType: Prefix
