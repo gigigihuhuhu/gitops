@@ -4,4 +4,4 @@ metadata:
   name: websocket-cm
   namespace: websocket
 data:
-  VUE_APP_WEB_SOCKET_SERVER: "http://ws.kyungsu.com/ws"
+  VUE_APP_WEB_SOCKET_SERVER: "https://ws.kyungsu.com/ws"
