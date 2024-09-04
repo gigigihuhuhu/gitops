@@ -4,10 +4,15 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    cert-manager.io/issuer: "websocket-letsencrypt-staging"
   name: websocket-ingress
   namespace: websocket
 spec:
   ingressClassName: nginx
+  tls:
+  - hosts:
+    - ws.kyungsu.com
+    secretName: websocket-tls
   rules:
   - host: ws.kyungsu.com
     http:

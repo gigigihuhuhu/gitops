@@ -4,21 +4,16 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    cert-manager.io/issuer: "video-app-letsencrypt-staging"
   name: video-app-ingress
   namespace: video-app
 spec:
+  tls:
+  - hosts:
+    - video.kyungsu.com
+    secretName: video-app-tls
   ingressClassName: nginx
   rules:
-  - host: kyungsu.com
-    http:
-      paths:
-      - backend:
-          service:
-            name: video-app
-            port:
-              number: 8081
-        path: /
-        pathType: Prefix
   - host: video.kyungsu.com
     http:
       paths:
