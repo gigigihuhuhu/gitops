@@ -2,16 +2,16 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: telemedicine-app
-    app.kubernetes.io/name: telemedicine-app
-  name: telemedicine-app
-  namespace: telemedicine-app
+    app: video-app
+    app.kubernetes.io/name: video-app
+  name: video-app
+  namespace: video-app
 spec:
   replicas: 1
   revisionHistoryLimit: 10
   selector:
     matchLabels:
-      app.kubernetes.io/name: telemedicine-app
+      app.kubernetes.io/name: video-app
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -20,13 +20,13 @@ spec:
   template:
     metadata:
       labels:
-        app: telemedicine-app
-        app.kubernetes.io/name: telemedicine-app
+        app: video-app
+        app.kubernetes.io/name: video-app
     spec:
       containers:
-      - image: docker.io/kyungsu77777/telemedicine-app:0.1.4
+      - image: docker.io/kyungsu77777/video-app:0.1.4
         imagePullPolicy: Always
-        name: telemedicine-app
+        name: video-app
         ports:
         - containerPort: 80
           protocol: TCP
@@ -37,9 +37,9 @@ spec:
         - name: VUE_APP_WEB_SOCKET_SERVER
           valueFrom:
             configMapKeyRef:
-              name: telemedicine-app-cm
+              name: video-app-cm
               key: VUE_APP_WEB_SOCKET_SERVER
       volumes:
       - name: config-volume
         configMap:
-          name: telemedicine-app-cm
+          name: video-app-cm

@@ -8,6 +8,8 @@ metadata:
   namespace: websocket
 spec:
   ingressClassName: nginx
+  tls:
+  - secretName: websocket-secret
   rules:
   - host: dev.ws.kyungsu.com
     http:

@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: telemedicine-app-cm
-  namespace: telemedicine-app
+  name: video-app-cm
+  namespace: video-app
 data:
   VUE_APP_WEB_SOCKET_SERVER: "http://kyungsu.com/ws"

@@ -4,27 +4,19 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
-  name: telemedicine-app-ingress
-  namespace: telemedicine-app
+  name: video-app-ingress
+  namespace: video-app
 spec:
   ingressClassName: nginx
+  tls:
+  - secretName: video-app-secret
   rules:
-  - host: kyungsu.com
+  - host: dev.video.kyungsu.com
     http:
       paths:
       - backend:
           service:
-            name: telemedicine-app
-            port:
-              number: 8081
-        path: /
-        pathType: Prefix
-  - host: video.kyungsu.com
-    http:
-      paths:
-      - backend:
-          service:
-            name: telemedicine-app
+            name: video-app
             port:
               number: 8081
         path: /

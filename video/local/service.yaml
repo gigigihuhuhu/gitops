@@ -1,11 +1,11 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: telemedicine-app
-  namespace: telemedicine-app
+  name: video-app
+  namespace: video-app
 spec:
   selector:
-    app: telemedicine-app
+    app: video-app
   ports:
     - protocol: TCP
       port: 8081
