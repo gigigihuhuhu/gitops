@@ -4,4 +4,4 @@ metadata:
   name: video-app-cm
   namespace: video-app
 data:
-  VUE_APP_WEB_SOCKET_SERVER: "http://dev.ws.kyungsu.com/ws"
+  VUE_APP_WEB_SOCKET_SERVER: "https://dev.ws.kyungsu.com/ws"
