@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: video-app
+  namespace: argocd
+spec:
+  destination:
+    namespace: video-app
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: video-app/prod
+    repoURL: https://github.com/gigigihuhuhu/gitops
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
