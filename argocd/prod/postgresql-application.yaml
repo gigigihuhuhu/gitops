@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: postgresql
+  namespace: argocd
+spec:
+  destination:
+    namespace: postgresql
+    server: https://kubernetes.default.svc
+  sources:
+    - path: ''
+      repoURL: registry-1.docker.io/bitnamicharts
+      targetRevision: 15.5.28
+      chart: postgresql
+    - repoURL: 'https://github.com/gigigihuhuhu/gitops'
+      targetRevision: main
+      path: 'postgresql/prod'
+      ref: values
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
