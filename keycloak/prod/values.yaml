@@ -1,0 +1,12 @@
+ingress:
+  enabled: true
+  ingressClassName: "nginx"
+  pathType: Prefix
+  controller: default
+  hostname: keycloak.kyungsu.com
+  servicePort: http
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+  tls: false
+  selfSigned: false
