@@ -7,10 +7,16 @@ spec:
   destination:
     namespace: cert-manager
     server: https://kubernetes.default.svc
-  source:
-    path: cert-manager/prod
-    repoURL: https://github.com/gigigihuhuhu/gitops
-    targetRevision: HEAD
+  sources:
+    - repoURL: https://charts.jetstack.io
+      targetRevision: 1.15.3
+      chart: cert-manager
+      helm:
+        valueFiles:
+        - $values/cert-manager/prod/values.yaml
+    - repoURL: 'https://github.com/gigigihuhuhu/gitops.git'
+      targetRevision: main
+      ref: values
   project: default
   syncPolicy:
     automated:
