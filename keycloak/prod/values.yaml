@@ -8,5 +8,7 @@ ingress:
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
-  tls: false
+    cert-manager.io/issuer: keycloak-letsencrypt-staging
+  tls: true
   selfSigned: false
+proxy: "edge"
