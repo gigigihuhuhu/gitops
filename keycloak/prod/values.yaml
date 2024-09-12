@@ -10,7 +10,7 @@ ingress:
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
-    cert-manager.io/issuer: keycloak-letsencrypt-staging
+    cert-manager.io/issuer: keycloak-letsencrypt-prod
   tls: true
   selfSigned: false
 adminIngress:
@@ -23,7 +23,7 @@ adminIngress:
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
-    cert-manager.io/issuer: keycloak-letsencrypt-staging
+    cert-manager.io/issuer: keycloak-letsencrypt-prod
   tls: true
   selfSigned: false
 keycloakConfigCli:
