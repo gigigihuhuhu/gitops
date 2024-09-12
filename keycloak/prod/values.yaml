@@ -42,6 +42,7 @@ postgresql:
 externalDatabase:
   host: postgresql.postgresql.svc.cluster.local
   user: keycloak
-  password: 4RoA9T5VdF
+    # password: 4RoA9T5VdF
   database: keycloak
   port: 5432
+  existingSecret: keycloak-externaldb
