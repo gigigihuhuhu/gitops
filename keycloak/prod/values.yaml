@@ -38,6 +38,10 @@ keycloakConfigCli:
       }
 proxy: "edge"
 postgresql:
-  enabled: true
-  auth:
-    existingSecret: keycloak-postgresql
+  enabled: false
+externalDatabase:
+  host: postgresql.postgresql.svc.cluster.local
+  user: keycloak
+  password: 4RoA9T5VdF
+  database: keycloak
+  port: 5432
