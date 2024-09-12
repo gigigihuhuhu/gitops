@@ -17,6 +17,9 @@ spec:
     - repoURL: 'https://github.com/gigigihuhuhu/gitops.git'
       targetRevision: main
       ref: values
+    - path: keycloak/prod
+      repoURL: https://github.com/gigigihuhuhu/gitops
+      targetRevision: main
   project: default
   syncPolicy:
     automated:
