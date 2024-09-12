@@ -15,7 +15,17 @@ ingress:
   selfSigned: false
 adminIngress:
   enabled: true
+  ingressClassName: "nginx"
+  pathType: Prefix
+  controller: default
   hostname: keycloak-admin.kyungsu.com
+  servicePort: http
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    cert-manager.io/issuer: keycloak-letsencrypt-staging
+  tls: true
+  selfSigned: false
 keycloakConfigCli:
   enabled: true
   configuration:
@@ -28,12 +38,6 @@ keycloakConfigCli:
       }
 proxy: "edge"
 postgresql:
-  enabled: false
+  enabled: true
   auth:
     existingSecret: keycloak-postgresql
-externalDatabase:
-  host: "postgresql.postgresql.svc.cluster.local"
-  port: 5432
-  user: keycloak
-  database: keycloak
-  existingSecret: keycloak-postgresql
