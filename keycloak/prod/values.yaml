@@ -1,3 +1,5 @@
+auth:
+  existingSecret: keycloak
 ingress:
   enabled: true
   ingressClassName: "nginx"
@@ -25,3 +27,7 @@ keycloakConfigCli:
         }
       }
 proxy: "edge"
+postgresql:
+  enabled: true
+  auth:
+    existingSecret: keycloak-postgresql
