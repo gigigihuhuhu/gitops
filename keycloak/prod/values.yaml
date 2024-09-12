@@ -11,4 +11,17 @@ ingress:
     cert-manager.io/issuer: keycloak-letsencrypt-staging
   tls: true
   selfSigned: false
+adminIngress:
+  enabled: true
+  hostname: keycloak-admin.kyungsu.com
+keycloakConfigCli:
+  enabled: true
+  configuration:
+    master.json: |
+      {
+        "realm" : "master",
+        "attributes": {
+          "frontendUrl": "https://keycloak-admin.kyungsu.com"
+        }
+      }
 proxy: "edge"
