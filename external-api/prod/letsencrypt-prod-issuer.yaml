@@ -1,0 +1,15 @@
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: external-api-letsencrypt-prod
+  namespace: external-api
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: kyungsu77777@gmail.com
+    privateKeySecretRef:
+      name: external-api-letsencrypt-prod
+    solvers:
+      - http01:
+          ingress:
+            ingressClassName: nginx

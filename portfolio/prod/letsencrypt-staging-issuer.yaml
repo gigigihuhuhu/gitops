@@ -1,0 +1,15 @@
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: portfolio-letsencrypt-staging
+  namespace: portfolio
+spec:
+  acme:
+    server: https://acme-staging-v02.api.letsencrypt.org/directory
+    email: kyungsu77777@gmail.com
+    privateKeySecretRef:
+      name: portfolio-letsencrypt-staging
+    solvers:
+      - http01:
+          ingress:
+            ingressClassName: nginx

@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: portfolio-cm
+  namespace: portfolio
+data:
+  VUE_APP_WEB_SOCKET_SERVER: "https://ws.kyungsu.com/ws"
+  VUE_APP_EXTERNAL_API_SERVER: "https://api.kyungsu.com"

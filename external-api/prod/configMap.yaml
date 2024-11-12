@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: external-api-cm
+  namespace: external-api
+data:
+  PORT: "3000"

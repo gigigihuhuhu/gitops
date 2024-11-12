@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    cert-manager.io/issuer: "external-api-letsencrypt-prod"
+  name: external-api-ingress
+  namespace: external-api
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - api.kyungsu.com
+    secretName: external-api-tls
+  rules:
+  - host: api.kyungsu.com
+    http:
+      paths:
+      - backend:
+          service:
+            name: external-api
+            port:
+              number: 3000
+        path: /
+        pathType: Prefix

@@ -1,0 +1,15 @@
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: portfolio-letsencrypt-prod
+  namespace: portfolio
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: kyungsu77777@gmail.com
+    privateKeySecretRef:
+      name: portfolio-letsencrypt-prod
+    solvers:
+      - http01:
+          ingress:
+            ingressClassName: nginx

@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: portfolio
+    app.kubernetes.io/name: portfolio
+  name: portfolio
+  namespace: portfolio
+spec:
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: portfolio
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: portfolio
+        app.kubernetes.io/name: portfolio
+    spec:
+      containers:
+      - image: docker.io/kyungsu77777/portfolio:0.1.7
+        imagePullPolicy: Always
+        name: portfolio
+        ports:
+        - containerPort: 80
+          protocol: TCP
+        volumeMounts:
+        - name: config-volume
+          mountPath: /app/config
+        env:
+        - name: VUE_APP_WEB_SOCKET_SERVER
+          valueFrom:
+            configMapKeyRef:
+              name: portfolio-cm
+              key: VUE_APP_WEB_SOCKET_SERVER
+        - name: VUE_APP_EXTERNAL_API_SERVER
+          valueFrom:
+            configMapKeyRef:
+              name: portfolio-cm
+              key: VUE_APP_EXTERNAL_API_SERVER
+      volumes:
+      - name: config-volume
+        configMap:
+          name: portfolio-cm

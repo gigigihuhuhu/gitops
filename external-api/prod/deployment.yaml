@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: external-api
+    app.kubernetes.io/name: external-api
+  name: external-api
+  namespace: external-api
+spec:
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: external-api
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: external-api
+        app.kubernetes.io/name: external-api
+    spec:
+      containers:
+      - image: docker.io/kyungsu77777/external-api:0.0.1
+        imagePullPolicy: Always
+        name: external-api
+        ports:
+        - containerPort: 80
+          protocol: TCP
+        volumeMounts:
+        - name: config-volume
+          mountPath: /app/config
+        env:
+        - name: PORT
+          valueFrom:
+            configMapKeyRef:
+              name: external-api-cm
+              key: PORT
+      volumes:
+      - name: config-volume
+        configMap:
+          name: external-api-cm
