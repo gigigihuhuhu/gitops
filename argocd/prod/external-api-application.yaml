@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: external-api
+  namespace: argocd
+spec:
+  destination:
+    namespace: external-api
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: external-api/prod
+    repoURL: https://github.com/gigigihuhuhu/gitops
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
