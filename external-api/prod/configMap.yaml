@@ -4,4 +4,4 @@ metadata:
   name: external-api-cm
   namespace: external-api
 data:
-  PORT: "3000"
+  PORT: "80"
