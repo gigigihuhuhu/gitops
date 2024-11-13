@@ -30,16 +30,14 @@ spec:
         ports:
         - containerPort: 80
           protocol: TCP
-        volumeMounts:
-        - name: config-volume
-          mountPath: /app/config
         env:
         - name: PORT
           valueFrom:
             configMapKeyRef:
               name: external-api-cm
               key: PORT
-      volumes:
-      - name: config-volume
-        configMap:
-          name: external-api-cm
+        - name: GITHUB_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: external-api-secret
+              key: github-token
