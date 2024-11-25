@@ -24,7 +24,7 @@ spec:
         app.kubernetes.io/name: portfolio
     spec:
       containers:
-      - image: docker.io/kyungsu77777/portfolio:1.0.0
+      - image: docker.io/kyungsu77777/portfolio:1.0.1
         imagePullPolicy: Always
         name: portfolio
         ports:
