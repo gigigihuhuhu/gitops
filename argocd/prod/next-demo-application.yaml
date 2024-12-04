@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: next-demo
+  namespace: argocd
+spec:
+  destination:
+    namespace: next-demo
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: next-demo/prod
+    repoURL: https://github.com/gigigihuhuhu/gitops
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: next-demo
+    app.kubernetes.io/name: next-demo
+  name: next-demo
+  namespace: next-demo
+spec:
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: next-demo
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: next-demo
+        app.kubernetes.io/name: next-demo
+    spec:
+      containers:
+      - image: docker.io/kyungsu77777/next-demo:0.1.0
+        imagePullPolicy: Always
+        name: next-demo
+        ports:
+        - containerPort: 80
+          protocol: TCP
