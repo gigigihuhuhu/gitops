@@ -30,3 +30,9 @@ spec:
         ports:
         - containerPort: 80
           protocol: TCP
+        env:
+        - name: PORT
+          valueFrom:
+            configMapKeyRef:
+              name: next-demo-cm
+              key: PORT

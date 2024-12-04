@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: next-demo-cm
+  namespace: next-demo
+data:
+  PORT: "80"
