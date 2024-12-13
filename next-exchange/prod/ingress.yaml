@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    cert-manager.io/issuer: "next-exchange-letsencrypt-prod"
+  name: next-exchange-ingress
+  namespace: next-exchange
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - exchange-demo.kyungsu.com
+    secretName: next-exchange-tls
+  rules:
+  - host: exchange-demo.kyungsu.com
+    http:
+      paths:
+      - backend:
+          service:
+            name: next-exchange
+            port:
+              number: 8084
+        path: /
+        pathType: Prefix

@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: next-exchange
+    app.kubernetes.io/name: next-exchange
+  name: next-exchange
+  namespace: next-exchange
+spec:
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: next-exchange
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: next-exchange
+        app.kubernetes.io/name: next-exchange
+    spec:
+      containers:
+      - image: docker.io/kyungsu77777/next-exchange:0.1.0
+        imagePullPolicy: Always
+        name: next-exchange
+        ports:
+        - containerPort: 80
+          protocol: TCP
+        env:
+        - name: PORT
+          valueFrom:
+            configMapKeyRef:
+              name: next-exchange-cm
+              key: PORT

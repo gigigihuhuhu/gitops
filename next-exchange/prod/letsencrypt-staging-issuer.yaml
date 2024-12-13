@@ -1,0 +1,15 @@
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  name: next-exchange-letsencrypt-staging
+  namespace: next-exchange
+spec:
+  acme:
+    server: https://acme-staging-v02.api.letsencrypt.org/directory
+    email: kyungsu77777@gmail.com
+    privateKeySecretRef:
+      name: next-exchange-letsencrypt-staging
+    solvers:
+      - http01:
+          ingress:
+            ingressClassName: nginx

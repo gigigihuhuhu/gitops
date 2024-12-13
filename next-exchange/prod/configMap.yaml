@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: next-exchange-cm
+  namespace: next-exchange
+data:
+  PORT: "80"
