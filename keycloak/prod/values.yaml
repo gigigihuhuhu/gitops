@@ -5,7 +5,7 @@ ingress:
   ingressClassName: "nginx"
   pathType: Prefix
   controller: default
-  hostname: keycloak.kyungsu.com
+  hostname: auth.kyungsu.com
   servicePort: http
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
