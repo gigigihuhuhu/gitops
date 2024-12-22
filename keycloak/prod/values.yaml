@@ -46,23 +46,23 @@ externalDatabase:
   database: keycloak
   port: 5432
   existingSecret: keycloak-externaldb
-keycloak:
-  initContainers:
-  - name: realm-ext-provider
-    image: curlimages/curl
-    imagePullPolicy: IfNotPresent
-    command:
-    - sh
-    args:
-    - -c
-    - |  
-      curl -L -f -S -o /extensions/keycloak-theme.jar https://github.com/gigigihuhuhu/keycloak-theme-Keycloakify/releases/download/v0.0.1/keycloak-theme-for-kc-22-to-25.jar
-    volumeMounts:
-    - name: extensions
-      mountPath: /extensions
-  extraVolumeMounts:
+
+initContainers:
+- name: realm-ext-provider
+  image: curlimages/curl
+  imagePullPolicy: IfNotPresent
+  command:
+  - sh
+  args:
+  - -c
+  - |  
+    curl -L -f -S -o /extensions/keycloak-theme.jar https://github.com/gigigihuhuhu/keycloak-theme-Keycloakify/releases/download/v0.0.1/keycloak-theme-for-kc-22-to-25.jar
+  volumeMounts:
   - name: extensions
-    mountPath: /opt/bitnami/keycloak/providers
-  extraVolumes:
-  - name: extensions
-    emptyDir: {}
+    mountPath: /extensions
+extraVolumeMounts:
+- name: extensions
+  mountPath: /opt/bitnami/keycloak/providers
+extraVolumes:
+- name: extensions
+  emptyDir: {}
